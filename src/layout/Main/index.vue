@@ -1,26 +1,31 @@
 <script setup lang="ts">
-import { onMounted } from 'vue'
-onMounted(() => {
-})
+import { computed, onMounted, Transition } from "vue";
+import { public_config } from "../layout.config";
+onMounted(() => {});
+const height = computed(() => {
+	return document.body.clientHeight - Number(public_config.height) + "px";
+});
+// const width = computed(() => {
+// 	return document.body.clientWidth - Number(public_config.width) + "px";
+// });
 </script>
 <template>
-    <div class="MainBox">
-        <router-view>
-            <template #default="{ Component }">
-                <Transition name="fade">
-                    <KeepAlive>
-                        <component :is="Component">
-                        </component>
-                    </KeepAlive>
-                </Transition>
-            </template>
-        </router-view>
-    </div>
+	<div class="MainBox">
+		<router-view v-slot="{ Component, route }">
+			<transition name="slide-fade" mode="out-in" appear>
+				<keep-alive>
+					<component :key="route.fullPath" :is="Component"> </component>
+				</keep-alive>
+			</transition>
+		</router-view>
+	</div>
 </template>
 <style lang="scss" scoped>
 .MainBox {
-    transition: .8s all;
-    flex: 1;
-    background-color: yellowgreen;
+	// width: v-bind(width);
+    width: 100%;
+	height: v-bind(height);
+	box-sizing: border-box;
+	overflow: hidden;
 }
 </style>

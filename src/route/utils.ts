@@ -24,11 +24,13 @@ export function initRoute(routeList: any, route_name?: string) {
             arrayToTree(list);
             item.children = list;
             Route.addRoute(item);
-            if (!route_name) {
-                Route.replace("/");
-            } else {
-                Route.push(route_name);
-            }
+            setTimeout(() => {
+                if (!route_name) {
+                    Route.replace("/");
+                } else {
+                    Route.push(route_name);
+                }
+            }, 500);
         }
     });
 }

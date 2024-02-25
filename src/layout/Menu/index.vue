@@ -2,6 +2,7 @@
 import { AppStore } from '@/store';
 import { onMounted } from 'vue'
 import { public_weight } from '../layout.config'
+import { Route } from '@/route';
 const { routeList } = AppStore()
 onMounted(() => {
 })
@@ -37,7 +38,9 @@ const handleClose = (key: string, keyPath: string[]) => {
                                 </div>
                                 <div v-else>
                                     <RouterLink :to="sub_item.path">
-                                        <el-menu-item :index="`${index + 1}-${sub_index + 1}`">
+                                        <el-menu-item :index="`${index + 1}-${sub_index + 1}`" @click="()=>{
+                                            console.log(Route)
+                                        }">
                                             {{ sub_item?.meta?.title }}
                                         </el-menu-item>
                                     </RouterLink>
@@ -65,6 +68,6 @@ const handleClose = (key: string, keyPath: string[]) => {
 .MenuBox {
     transition: .8s all;
     width: v-bind(public_weight);
-    background-color: pink;
+    // background-color: pink;
 }
 </style>

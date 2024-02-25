@@ -1,73 +1,24 @@
-<!-- <script setup lang="ts">
-import { UserStore } from '@/store/user';
-import { onMounted, reactive, ref } from 'vue'
-onMounted(() => {
-})
-const loginForm = reactive({
-    user: "82066232",
-    password: "123",
-})
-const rules = ref({
-    user: [
-        { required: true, message: "请输入用户名", trigger: "blur" },
-    ],
-    password: [
-        { required: true, message: "请输入密码", trigger: "blur" },
-    ],
-})
-const loginFormRef = ref()
-function submitForm(form: any) {
-    loginFormRef.value.validate((valid: any) => {
-        if (valid) {
-            UserStore().Login(form)
-        } else {
-            console.log("登录失败");
-            return false;
-        }
-    });
-}
-</script>
-<template>
-    <div class="loginBox am_">
-        <div class="login">
-            <el-form ref="loginFormRef" :model="loginForm" :rules="rules" label-width="0" class="login-form">
-                <el-form-item prop="user">
-                    <el-input v-model="loginForm.user" placeholder="用户名"></el-input>
-                </el-form-item>
-                <el-form-item prop="password">
-                    <el-input type="password" v-model="loginForm.password" placeholder="密码"></el-input>
-                </el-form-item>
-                <el-form-item>
-                    <el-button type="primary" class="login-form-button"  @click="submitForm(loginForm)">登录</el-button>
-                </el-form-item>
-            </el-form>
-        </div>
-    </div>
-</template>
-<style lang="scss" scoped>
-.loginBox {
-    width: 100%;
-    height: 100%;
-}
-</style> -->
 <script setup lang="ts">
 import { onMounted, reactive, ref } from "vue";
-import { Refresh } from "@element-plus/icons-vue";
+import { Lock, Refresh, User } from "@element-plus/icons-vue";
 import { UserStore } from "@/store/user";
+import { gsap } from "gsap";
 // import qrcode from 'qrcodejs2-fix';
 // import { h } from 'vue'
 // import { ElNotification } from 'element-plus'
 let timer: any;
-// const _this = reactive({
-// })
-// const {} = toRefs(_this)
 const showQrCode = ref(false);
 const pageOnload = ref(false);
 const qrLoginTip = ref("二维码登录");
+const btnLoading = ref(false);
 onMounted(() => {
+	let tl = gsap.timeline();
+	tl.from(".box", { y: 300, opacity: 1, width: 0, duration: 1 });
+	tl.from(".fnBtnGroup", { y: 200, opacity: 1, width: 0, duration: 1 }, "<");
+	tl.from(".phone", { opacity: 0, y: 100, duration: 0.5 });
 	setTimeout(() => {
 		pageOnload.value = true;
-	}, 500);
+	});
 });
 /**
  * 生成二维码
@@ -129,19 +80,24 @@ const loginForm = reactive({
 	password: "123",
 	appid: 0,
 });
-function login() {
-	UserStore().Login(loginForm);
+async function login() {
+	btnLoading.value = true;
+	await UserStore().Login(loginForm);
+	btnLoading.value = false;
 }
 </script>
 <template>
 	<div class="login am_">
 		<div class="loginBox theme- pr_ fx_">
-			<div class="logo" :class="{ 'logo-activity': pageOnload }">
+			<div
+				class="logo"
+				:class="{ 'logo-activity': pageOnload }"
+				v-on:mouseout="logoMouseOver"
+				v-on:mouseover="logoMouseOut"
+			>
 				<img
 					class="logo_img"
 					:class="{ showQrCode: showQrCode }"
-					v-on:mouseout="logoMouseOut"
-					v-on:mouseover="logoMouseOver"
 					src="https://pd-base.oss-cn-heyuan.aliyuncs.com/strap-trousers.png"
 				/>
 				<div class="qrCodeMod fx_y">
@@ -159,28 +115,30 @@ function login() {
 				</div>
 			</div>
 			<div class="box theme-- pr_ fx_x">
-				<div class="inputMod pa_" :class="{ 'inputMod-activity': pageOnload }">
+				<div class="inputMod pa_ inputMod-activity">
 					<div class="title">登录</div>
-					<div class="phone">
-						<div class="text">账号</div>
-						<el-input v-model="loginForm.user" />
+					<div class="phone fx_">
+						<!-- <div class="text">账号</div> -->
+						<el-input :prefix-icon="User" placeholder="账号" v-model="loginForm.user" />
 					</div>
-					<div class="phone">
-						<div class="text">密码</div>
-						<el-input v-model="loginForm.password" />
+					<div class="phone fx_">
+						<!-- <div class="text">密码</div> -->
+						<el-input :prefix-icon="Lock" placeholder="密码" v-model="loginForm.password" />
 					</div>
 				</div>
-				<div class="fnBtnGroup" :class="{ 'fnBtnGroup-activity': pageOnload }">
+				<div class="fnBtnGroup">
 					<div class="fnBtn am_" @click="login">
-						<text>登录</text>
+						<!-- <text>{{ btnLoading ? "正在登录" : "登录" }}</text> -->
+                        <el-button style="width: 100%;" type="primary" :loading="btnLoading">登录</el-button>
 					</div>
-					<div
+					<!-- 生成二维码 -->
+					<!-- <div
 						class="qrLogin am_"
 						:class="{ 'qrLogin-activity': showQrCode }"
 						@click="makeQrCode"
 					>
 						<text>{{ qrLoginTip }}</text>
-					</div>
+					</div> -->
 				</div>
 			</div>
 		</div>
@@ -233,19 +191,19 @@ function login() {
 		height: 20rem;
 		border-radius: 1rem;
 		overflow: hidden;
-		box-shadow: #5b5b5b 3px 4px 16px, #cac3c3 3px 4px 16px;
+		box-shadow: #121212 3px 4px 5px, #333333 3px 4px 5px;
 
 		.box {
 			width: 15rem;
 			padding: 1rem 1rem;
-			background-color: #505054;
+			background-color: #ffffff;
 			padding-top: 10rem;
 
 			.fnBtnGroup {
 				// opacity: 0;
-				transition: 1s all;
+				// transition: 1s all;
 				padding-top: 10rem;
-
+				padding-top: 2rem !important;
 				.qrLogin {
 					font-size: 0.8rem;
 					text-decoration: underline;
@@ -253,19 +211,19 @@ function login() {
 					margin-top: 1rem;
 					cursor: pointer;
 					user-select: none;
-					transform: translateX(0);
+					// transform: translateX(0);
 					opacity: 1;
-					transition: 0.4s all;
+					// transition: 0.4s all;
 				}
 
 				.fnBtn {
 					width: 13rem;
 					height: 2rem;
-					background-color: #fff;
+					// background-color: #fff;
 					border-radius: 0.3rem;
 					font-size: 0.8rem;
-					box-shadow: inset #eeeeee 1px 1px 3px, #e3e3e3 2px 2px 5px;
-					text-shadow: inset #eeeeee 1px 1px 3px, #e3e3e3 2px 2px 5px;
+					// box-shadow: inset #eeeeee 1px 1px 3px, #e3e3e3 2px 2px 5px;
+					// text-shadow: inset #eeeeee 1px 1px 3px, #e3e3e3 2px 2px 5px;
 				}
 			}
 
@@ -277,25 +235,24 @@ function login() {
 				top: 5rem;
 				left: 6rem;
 
-				input {
-					width: 13rem;
-				}
+				// input {
+				// 	width: 13rem;
+				// }
 
 				.title {
 					font-size: 1.5rem;
 					font-weight: 700;
-					margin-bottom: 1rem;
+					margin-bottom: 2rem;
 				}
 
 				.phone {
-					padding: 0.2rem 0.4rem;
-
+					padding: 0 0.8rem 1.2rem 0.8rem;
 					.text {
 						font-size: 0.9rem;
 						margin-left: 0.1rem;
 					}
-
 					input {
+						// width: 95%;
 						border: none;
 						background-color: transparent;
 						border-bottom: #347b8b 1px solid;

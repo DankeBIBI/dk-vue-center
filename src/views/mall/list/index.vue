@@ -1,16 +1,18 @@
 <script setup lang="ts">
-import { onMounted } from 'vue'
-onMounted(() => {
-})
+import { dkTable } from "@/components/dk-components";
+import { onMounted } from "vue";
+import config from './config'
+onMounted(() => {});
 </script>
 <template>
-    <div class="container am_">
-        <el-button>商城列表</el-button>
-    </div>
+	<div class="list am_">
+		<dkTable :table-options="config" />
+	</div>
 </template>
 <style lang="scss" scoped>
-.container {
-    width: 100%;
-    height: 100%;
+.list {
+	width: inherit;
+	height: inherit;
+    box-sizing: border-box;
 }
 </style>

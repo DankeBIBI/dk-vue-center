@@ -13,9 +13,6 @@ const useAppStore = defineStore('AppStore', {
         routeList: [] as routeListDto[]
     }),
     actions: {
-        // getRouteComponent(path: string) {
-        //     return this.useRouteRole[]
-        // }
         /**设置菜单路由 */
         setRouteList(list: routeListDto[]) {
             this.routeList = list
