@@ -1,14 +1,42 @@
 import { mall } from '@/api'
-import { __tableOptionsCallback, __tableColumn } from '@/components/dk-components/type'
-import { onMounted, ref } from 'vue'
+import { __tableOptionsCallback, __tableColumn, __tableLoading, __tablePagination, __tableInit } from '@/components/dk-components/type'
+import { onMounted, reactive, ref } from 'vue'
 export default () => {
     const tableData = ref([])
-    const init = async () => {
+    const init = async (value?: __tableInit) => {
+        loading.loading = true
         const res = await mall.goodsList()
-        tableData.value = res.data
+        setTimeout(() => {
+            tableData.value = res.data
+            loading.loading = false
+        }, 600);
     }
     onMounted(() => {
         init()
+    })
+    const loading: __tableLoading = reactive({
+        loading: false,
+        background: 'rgba(255, 255, 255, .5)',
+        tip: '正在加载数据。。。',
+        svg: {
+            position: "-10, -10, 50, 50",
+            src: `
+            <path class="path" d="
+            M 30 15
+            L 28 17
+            M 25.61 25.61
+            A 15 15, 0, 0, 1, 15 30
+            A 15 15, 0, 1, 1, 27.99 7.5
+            L 15 15
+            " style="stroke-width: 4px; fill: rgba(0, 0, 0, 0)"/>
+            `
+        }
+    })
+    const pagination:__tablePagination = reactive({
+        page:1,
+        limit:10,
+        total:100,
+        pageSize:[10,25,50,100]
     })
     const tableColumns: __tableColumn[] = [
         {
@@ -66,6 +94,9 @@ export default () => {
     ]
     return {
         tableColumns,
-        tableData
+        tableData,
+        loading,
+        init,
+        pagination
     } as __tableOptionsCallback
 } 

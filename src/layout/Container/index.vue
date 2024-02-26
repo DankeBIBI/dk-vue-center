@@ -10,8 +10,8 @@ onMounted(() => {});
 		<!-- <el-progress :percentage="20" :stroke-width="4" stroke-linecap="dashboard " :show-text="false" status="success" striped striped-flow :duration="10" /> -->
 		<TopBarVue />
 		<div class="fx_ containerBox_body">
-			<MenuVue />
-			<MainVue />
+			<MenuVue class="containerBox_body_menu" />
+			<MainVue class="containerBox_body_main" />
 		</div>
 	</div>
 </template>
@@ -21,10 +21,18 @@ onMounted(() => {});
 	height: 100%;
 	display: flex;
 	flex-direction: column;
-    box-sizing: border-box;
+	box-sizing: border-box;
 	&_body {
 		flex: 1;
-        width: auto;
+		width: auto;
+		display: flex;
+		// flex-direction: column;
+        &_menu{
+
+        }
+        &_body{
+            flex: 1;
+        }
 	}
 }
 </style>
