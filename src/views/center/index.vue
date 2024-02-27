@@ -1,17 +1,18 @@
 <script setup lang="ts">
-import { dkForm, dkTable } from "@/components/dk-components";
+import { dkForm, dkTable } from "dk-vue-components";
 import {
 	__tableOptionsCallback,
 	__dkItemSelectOptions,
 	__dkFormOptions,
 __tableColumn,
-} from "@/components/dk-components/type";
+__dkFormRef
+} from "dk-vue-components/type";
 import { onMounted, ref } from "vue";
 import { rootUrl } from "@/api";
 import {dkTableOptions,tableColumns,tableData} from './center' 
 
 onMounted(() => {});
-const formRef = ref<dkFormRef>();
+const formRef = ref<__dkFormRef>();
 const size = ref<any>("small");
 const mallFormOption = ref<__dkItemSelectOptions[]>([
 	{
