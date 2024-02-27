@@ -913,6 +913,11 @@ delayed-stream@~1.0.0:
   resolved "https://registry.npmmirror.com/delayed-stream/-/delayed-stream-1.0.0.tgz#df3ae199acadfb7d440aaae0b29e2272b24ec619"
   integrity sha512-ZySD7Nf91aLB0RxL4KGrKHBXl7Eds1DAmEdcoVawXnLD7SDhpNgtuII2aAkg7a7QS41jxPSZ17p4VdGnMHk3MQ==
 
+dk-vue-components@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/dk-vue-components/-/dk-vue-components-1.0.0.tgz#5955d53bc89f4ddca3d090712f098a5ddfd9026b"
+  integrity sha512-oUp20CRlILRxpi2JpBCtfdGUAJ7TznkKguzaYJ3S5TEFtKmSE2xhGDOucjIPZ2j2CP3rQ3XhdV4cxlJykR6Uyw==
+
 electron-to-chromium@^1.4.668:
   version "1.4.672"
   resolved "https://registry.npmmirror.com/electron-to-chromium/-/electron-to-chromium-1.4.672.tgz#f8ce803b43898b7e91dcfcf70d6fd656b11a645d"

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { dkTable } from "@/components/dk-components";
+import { dkTable } from "dk-vue-components";
 import config from "./config";
 </script>
 <template>

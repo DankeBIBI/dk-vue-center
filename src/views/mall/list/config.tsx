@@ -1,5 +1,5 @@
 import { mall } from '@/api'
-import { __tableOptionsCallback, __tableColumn, __tableLoading, __tablePagination, __tableInit } from '@/components/dk-components/type'
+import { __tableOptionsCallback, __tableColumn, __tableLoading, __tablePagination, __tableInit } from 'dk-vue-components'
 import { onMounted, reactive, ref } from 'vue'
 export default () => {
     const tableData = ref([])
