@@ -15,10 +15,15 @@ onMounted(() => {
 	let tl = gsap.timeline();
 	tl.from(".box", { y: 300, opacity: 1, width: 0, duration: 1 });
 	tl.from(".fnBtnGroup", { y: 200, opacity: 1, width: 0, duration: 1 }, "<");
-	tl.from(".phone", { opacity: 0, y: 100, duration: 0.5 });
+	tl.from(".phone", { opacity: 0, y: 100, duration: 0.3 });
+	tl.from(".fnBtn", { opacity: 0, x: 100, duration: 0.3 },"<");
 	setTimeout(() => {
 		pageOnload.value = true;
 	});
+    if(import.meta.env.DEV){
+        loginForm.user = '13425278202'
+        loginForm.password = '123'
+    }
 });
 /**
  * 生成二维码
@@ -76,8 +81,8 @@ function refresh() {
 	makeQrCode();
 }
 const loginForm = reactive({
-	user: "82066232",
-	password: "123",
+	user: "",
+	password: "",
 	appid: 0,
 });
 async function login() {
@@ -115,18 +120,18 @@ async function login() {
 				</div>
 			</div>
 			<div class="box theme-- pr_ fx_x">
-				<div class="inputMod pa_ inputMod-activity">
+				<div class="inputMod ">
 					<div class="title">登录</div>
 					<div class="phone fx_">
 						<!-- <div class="text">账号</div> -->
-						<el-input :prefix-icon="User" placeholder="账号" v-model="loginForm.user" />
+						<el-input :prefix-icon="User" placeholder="账号" size="large" v-model="loginForm.user" />
 					</div>
 					<div class="phone fx_">
 						<!-- <div class="text">密码</div> -->
-						<el-input :prefix-icon="Lock" placeholder="密码" v-model="loginForm.password" />
+						<el-input :prefix-icon="Lock" placeholder="密码" size="large" v-model="loginForm.password" />
 					</div>
 				</div>
-				<div class="fnBtnGroup">
+				<div class="fnBtnGroup fx_x">
 					<div class="fnBtn am_" @click="login">
 						<!-- <text>{{ btnLoading ? "正在登录" : "登录" }}</text> -->
                         <el-button style="width: 100%;" type="primary" :loading="btnLoading">登录</el-button>
@@ -145,11 +150,11 @@ async function login() {
 	</div>
 </template>
 <style lang="scss">
-.inputMod-activity {
-	clip-path: inset(0 0 0 0) !important;
-	top: 1rem !important;
-	left: 1rem !important;
-}
+// .inputMod-activity {
+// 	clip-path: inset(0 0 0 0) !important;
+// 	top: 1rem !important;
+// 	left: 1rem !important;
+// }
 
 .logo-activity {
 	width: 20rem !important;
@@ -197,13 +202,12 @@ async function login() {
 			width: 15rem;
 			padding: 1rem 1rem;
 			background-color: #ffffff;
-			padding-top: 10rem;
+			// padding-top: 10rem;
 
 			.fnBtnGroup {
-				// opacity: 0;
-				// transition: 1s all;
-				padding-top: 10rem;
-				padding-top: 2rem !important;
+                // clip-path: inset(0 130px 110px 0);
+                width: 100%;
+                padding: 1rem 0.8rem 1.2rem 0.8rem;
 				.qrLogin {
 					font-size: 0.8rem;
 					text-decoration: underline;
@@ -211,38 +215,24 @@ async function login() {
 					margin-top: 1rem;
 					cursor: pointer;
 					user-select: none;
-					// transform: translateX(0);
 					opacity: 1;
-					// transition: 0.4s all;
 				}
 
 				.fnBtn {
-					width: 13rem;
+					width: 90%;
 					height: 2rem;
-					// background-color: #fff;
 					border-radius: 0.3rem;
 					font-size: 0.8rem;
-					// box-shadow: inset #eeeeee 1px 1px 3px, #e3e3e3 2px 2px 5px;
-					// text-shadow: inset #eeeeee 1px 1px 3px, #e3e3e3 2px 2px 5px;
 				}
 			}
 
 			.inputMod {
-				// clip-path: circle(25% at 0% 0%);
-				// background-color: #1e1e23;
-				clip-path: inset(0 130px 110px 0);
 				transition: 0.5s all;
-				top: 5rem;
-				left: 6rem;
-
-				// input {
-				// 	width: 13rem;
-				// }
 
 				.title {
 					font-size: 1.5rem;
 					font-weight: 700;
-					margin-bottom: 2rem;
+					margin-bottom: 5rem;
 				}
 
 				.phone {
@@ -255,7 +245,7 @@ async function login() {
 						// width: 95%;
 						border: none;
 						background-color: transparent;
-						border-bottom: #347b8b 1px solid;
+						// border-bottom: #347b8b 1px solid;
 					}
 				}
 			}

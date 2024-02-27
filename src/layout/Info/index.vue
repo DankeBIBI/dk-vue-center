@@ -18,9 +18,10 @@ onMounted(() => {
 <style lang="scss" scoped>
 .InfoBox {
 	transition: 0.8s all;
-	width: v-bind(public_weight);
+	width: v-bind(public_weight) !important;
 	height: v-bind(public_height);
 	padding: 0 10px;
+    box-sizing:border-box;
 	.logo {
 		width: 50px;
 		height: 50px;

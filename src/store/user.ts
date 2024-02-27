@@ -17,7 +17,7 @@ const useUser = defineStore("User", {
                 if (!route_name) showTip(res.msg, res.code != 1 ? "error" : "success");
                 if (res.code != 1) return false;
                 this.userInfo = res.data
-                initRoute(res.data.route_list, route_name);
+                await initRoute(res.data.route_list, route_name);
                 return true
             } catch (e) {
                 return false

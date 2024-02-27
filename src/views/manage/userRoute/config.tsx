@@ -1,14 +1,13 @@
-import { mall } from '@/api'
+import { route } from '@/api'
 import { __tableOptionsCallback, __tableColumn, __tableLoading, __tablePagination, __tableInit } from '@/components/dk-components/type'
 import { onMounted, reactive, ref } from 'vue'
 export default () => {
     const tableData = ref([])
     const init = async (value?: __tableInit) => {
         loading.loading = true
-        const res = await mall.goodsList(value)
+        const res = await route.userRouteList(value)
         setTimeout(() => {
-            tableData.value = res.data.rows
-            pagination.total = res.data.count
+            tableData.value = res.data
             loading.loading = false
         }, 600);
     }
@@ -41,66 +40,35 @@ export default () => {
     })
     const tableColumns: __tableColumn[] = [
         {
-            label: '商品名称',
-            prop: 'name',
-            width: 300,
-            tooltip: true
+            label: '菜单名字',
+            prop: 'title',
         },
         {
-            label: '短名称',
-            prop: 'mini_name',
-            width: 300
+            label: '菜单英文',
+            prop: 'menu_name',
         },
         {
-            label: '价格',
-            prop: 'price',
+            label: '动态路由',
+            prop: 'active_route',
         },
         {
-            label: '原价格',
-            prop: 'source_price',
+            label: '地址',
+            prop: 'url',
         },
         {
-            label: '库存',
-            prop: 'stock',
+            label: '页面地址',
+            prop: 'component',
         },
         {
-            label: '商品图',
-            prop: 'pic',
-            cellRander: ({ row }) => (
-
-                <>
-                    <el-image preview-teleported preview-src-list={[row.pic]} src={row.pic} style="width:60px;height:60px" />
-                </>
-
-            )
+            label: '描述',
+            prop: 'description',
         },
-        {
-            label: '以出售数量',
-            prop: 'sales',
-        },
-        {
-            label: '分类',
-            prop: 'sort',
-        },
-        {
-            label: '操作',
-            prop: 'action',
-            fixed: "right",
-            cellRander: ({ row }) => (
-                <>
-                    <el-button type="primary" link onClick={Setting(row)}>编辑</el-button>
-                </>
-            )
-        }
     ]
-    const Setting = (row) => {
-
-    }
     return {
         tableColumns,
         tableData,
-        loading,
         init,
+        loading,
         pagination
     } as __tableOptionsCallback
 } 

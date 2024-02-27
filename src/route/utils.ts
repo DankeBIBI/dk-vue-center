@@ -26,7 +26,7 @@ export function initRoute(routeList: any, route_name?: string) {
             Route.addRoute(item);
             setTimeout(() => {
                 if (!route_name) {
-                    Route.replace("/");
+                    Route.replace(routeList[0].route.url);
                 } else {
                     Route.push(route_name);
                 }

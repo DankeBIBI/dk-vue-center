@@ -5,7 +5,7 @@ export default () => {
     const tableData = ref([])
     const init = async (value?: __tableInit) => {
         loading.loading = true
-        const res = await route.routeList()
+        const res = await route.routeList(value)
         setTimeout(() => {
             tableData.value = res.data
             loading.loading = false

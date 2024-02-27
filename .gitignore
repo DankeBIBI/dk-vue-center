@@ -26,3 +26,5 @@ dist-ssr
 .vercel
 .history/
 .VSCodeCounter/
+public/tinymce/
+public/tinymce1/

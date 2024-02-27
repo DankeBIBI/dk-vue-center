@@ -15,8 +15,8 @@ const isActive = (item: any) => {
 <template>
 	<div class="TopBarBox fx_">
 		<InfoVue />
-		<div>
-			<div class="routeTabs fx_">
+		<div class="TopBarBox_info">
+			<div class="TopBarBox_info_routeTabs fx_">
 				<div
 					v-for="(item, index) in RunTimeRoute().activePageList"
 					:key="index"
@@ -25,6 +25,7 @@ const isActive = (item: any) => {
 						:checked="isActive(item)"
 						type="primary"
 						@click="toTriggerPage(item)"
+                        class="routeTag"
 					>
 						{{ item.meta?.title }}
 					</el-check-tag>
@@ -37,5 +38,20 @@ const isActive = (item: any) => {
 .TopBarBox {
 	transition: 0.8s all;
 	height: v-bind(public_height);
+	&_info {
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+		&_routeTabs {
+			margin-top: auto;
+			width: 100%;
+			border-bottom: 1px solid #ebeef5 !important;
+            padding: 5px 0 ;
+			// background-color: pink;
+            .routeTag{
+                margin-right: 10px;
+            }
+		}
+	}
 }
 </style>
