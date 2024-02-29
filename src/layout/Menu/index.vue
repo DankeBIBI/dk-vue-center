@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { AppStore } from "@/store";
 import { onMounted } from "vue";
-import { public_weight } from "../layout.config";
+import { public_weight,public_config } from "../layout.config";
 import { Route } from "@/route";
 const { routeList } = AppStore();
 onMounted(() => {});
@@ -15,10 +15,13 @@ const handleClose = (key: string, keyPath: string[]) => {
 <template>
 	<div class="MenuBox">
 		<!-- <RouterLink to="/login">login</RouterLink> -->
+        <!-- <el-text>{{ public_config }}</el-text> -->
+        <!-- :collapse="true" -->
 		<el-menu
 			default-active="2"
 			@open="handleOpen"
 			@close="handleClose"
+            mode="horizontal"
 		>
 			<div v-for="(item, index) in routeList" :key="index" :index="index + 1">
 				<div v-if="item.children && item.children.length > 0">
@@ -72,11 +75,11 @@ const handleClose = (key: string, keyPath: string[]) => {
 <style lang="scss" scoped>
 .MenuBox {
 	transition: 0.8s all;
-	width: v-bind(public_weight) !important;
+	// width: v-bind(public_weight) !important;
 	// background-color: pink;
 	ul {
-		padding-inline-start: 0px !important;
-        width: v-bind(public_weight) !important;;
+		// padding-inline-start: 0px !important;
+        // width: v-bind(public_weight) !important;
 	}
 }
 </style>

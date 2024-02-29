@@ -29,8 +29,6 @@ onMounted(() => {});
 		// flex-direction: column;
         &_body{
             flex: 1;
-            &_menu{
-            }
             &_main{
                 box-sizing: border-box;
                 padding: 10px 10px ;
