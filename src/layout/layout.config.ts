@@ -16,5 +16,6 @@ export const public_weight = computed(() => {
 });
 /**检测是否为移动端 */
 export const checkIsMobile = () =>{
+    console.log(public_config);
 	public_config.is_mobile = window.innerWidth < 768;
 }

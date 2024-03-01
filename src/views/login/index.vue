@@ -14,16 +14,35 @@ const btnLoading = ref(false);
 onMounted(() => {
 	let tl = gsap.timeline();
 	tl.from(".box", { y: 300, opacity: 1, width: 0, duration: 1 });
-	tl.from(".fnBtnGroup", { y: 200, opacity: 1, width: 0, duration: 1 }, "<");
-	tl.from(".phone", { opacity: 0, y: 100, duration: 0.3 });
-	tl.from(".fnBtn", { opacity: 0, x: 100, duration: 0.3 },"<");
+	tl.from(
+		".fnBtnGroup",
+		{ y: 200, opacity: 1, ease: "elastic.out(1,0.5)", width: 0, duration: 1 },
+		"<"
+	);
+	tl.from(".title", {
+		opacity: 0,
+		y: 50,
+		ease: "elastic.out(1,0.5)",
+		duration: 1.5,
+	});
+	tl.from(".phone", {
+		opacity: 0,
+		y: 100,
+		ease: "elastic.out(1,0.5)",
+		duration: 1,
+	},"<");
+	tl.from(
+		".fnBtn",
+		{ opacity: 0, x: 100, ease: "elastic.out(1,0.5)", duration: 1 },
+		"<"
+	);
 	setTimeout(() => {
 		pageOnload.value = true;
 	});
-    if(import.meta.env.DEV){
-        loginForm.user = '13425278202'
-        loginForm.password = '123'
-    }
+	if (import.meta.env.DEV) {
+		loginForm.user = "13425278202";
+		loginForm.password = "123";
+	}
 });
 /**
  * 生成二维码
@@ -120,21 +139,33 @@ async function login() {
 				</div>
 			</div>
 			<div class="box theme-- pr_ fx_x">
-				<div class="inputMod ">
+				<div class="inputMod">
 					<div class="title">登录</div>
 					<div class="phone fx_">
 						<!-- <div class="text">账号</div> -->
-						<el-input :prefix-icon="User" placeholder="账号" size="large" v-model="loginForm.user" />
+						<el-input
+							:prefix-icon="User"
+							placeholder="账号"
+							size="large"
+							v-model="loginForm.user"
+						/>
 					</div>
 					<div class="phone fx_">
 						<!-- <div class="text">密码</div> -->
-						<el-input :prefix-icon="Lock" placeholder="密码" size="large" v-model="loginForm.password" />
+						<el-input
+							:prefix-icon="Lock"
+							placeholder="密码"
+							size="large"
+							v-model="loginForm.password"
+						/>
 					</div>
 				</div>
 				<div class="fnBtnGroup fx_x">
 					<div class="fnBtn am_" @click="login">
 						<!-- <text>{{ btnLoading ? "正在登录" : "登录" }}</text> -->
-                        <el-button style="width: 100%;" type="primary" :loading="btnLoading">登录</el-button>
+						<el-button style="width: 100%" type="primary" :loading="btnLoading"
+							>登录</el-button
+						>
 					</div>
 					<!-- 生成二维码 -->
 					<!-- <div
@@ -205,9 +236,9 @@ async function login() {
 			// padding-top: 10rem;
 
 			.fnBtnGroup {
-                // clip-path: inset(0 130px 110px 0);
-                width: 100%;
-                padding: 1rem 0.8rem 1.2rem 0.8rem;
+				// clip-path: inset(0 130px 110px 0);
+				width: 100%;
+				padding: 1rem 0.8rem 1.2rem 0.8rem;
 				.qrLogin {
 					font-size: 0.8rem;
 					text-decoration: underline;

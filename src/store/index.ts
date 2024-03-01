@@ -1,6 +1,4 @@
 import { defineStore } from 'pinia'
-import { RouteRecordRaw } from 'vue-router'
-type routeListDto = RouteRecordRaw & { title?: string }
 const useAppStore = defineStore('AppStore', {
     state: () => ({
         /**路由规则 */

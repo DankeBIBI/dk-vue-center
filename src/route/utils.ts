@@ -6,7 +6,6 @@ import { setSessionStorage } from "@/utils";
 
 /**初始话路由 */
 export function initRoute(routeList: any, route_name?: string) {
-    console.log("🚀 -- 》》 ~ routeList:", routeList)
     let list = routeList.map((item: any) => {
         item = item.route;
         let roleIndex = item.component.split("/").length - 2;

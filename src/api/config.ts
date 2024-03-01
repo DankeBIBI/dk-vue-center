@@ -4,10 +4,10 @@ export type pageOptions = {
     page: number;
     limit: number;
 }
-// export const rootUrl = import.meta.env.DEV
-//     ? "http://127.0.0.1:8202/"
-//     : "https://api.dankebibi.cc/";
-export const rootUrl = 'https://api.dankebibi.cc/'
+export const rootUrl = import.meta.env.DEV
+    ? "http://192.168.1.109:8202/"
+    : "https://api.dankebibi.cc/";
+// export const rootUrl = 'https://api.dankebibi.cc/'
 export const config = {
     rootUrl,
     data: {

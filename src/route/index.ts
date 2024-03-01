@@ -33,7 +33,6 @@ Route.beforeEach(async (to, from, next) => {
         } else return Route.push("login");
         next();
     } else {
-        console.log("🚀 -- 》》 ~ to.fullPath:", to.fullPath)
         if (!['/login', '/'].includes(to.fullPath))
             RunTimeRoute().addActivePage(to)
         console.log(RunTimeRoute().activePageList);

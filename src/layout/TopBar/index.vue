@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onMounted } from "vue";
-import { public_height } from "../layout.config";
+import { public_height, public_config } from "../layout.config";
 import InfoVue from "../Info/index.vue";
 import { RunTimeRoute } from "@/store/route";
 import { Route } from "@/route";
@@ -16,7 +16,10 @@ const isActive = (item: any) => {
 	<div class="TopBarBox fx_">
 		<InfoVue />
 		<div class="TopBarBox_info">
-			<div class="TopBarBox_info_routeTabs fx_">
+			<div
+				class="TopBarBox_info_routeTabs fx_"
+				v-show="!public_config.is_mobile"
+			>
 				<div
 					v-for="(item, index) in RunTimeRoute().activePageList"
 					:key="index"
@@ -25,7 +28,7 @@ const isActive = (item: any) => {
 						:checked="isActive(item)"
 						type="primary"
 						@click="toTriggerPage(item)"
-                        class="routeTag"
+						class="routeTag"
 					>
 						{{ item.meta?.title }}
 					</el-check-tag>
@@ -46,11 +49,11 @@ const isActive = (item: any) => {
 			margin-top: auto;
 			width: 100%;
 			border-bottom: 1px solid #ebeef5 !important;
-            padding: 5px 0 ;
+			padding: 5px 0;
 			// background-color: pink;
-            .routeTag{
-                margin-right: 10px;
-            }
+			.routeTag {
+				margin-right: 10px;
+			}
 		}
 	}
 }
