@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { dkForm, dkTable } from "dk-vue-components";
+import { dkForm, dkTable } from "@/components/dk-vue-components";
 import {
 	__tableOptionsCallback,
 	__dkItemSelectOptions,
@@ -107,6 +107,11 @@ const dkFormOption = [
 		prop: "date",
 		type: "date",
 		required: true,
+        trigger: {
+			change(e) {
+				console.log(e, "测试触发器");
+			},
+		},
 	},
 	{
 		title: "某一个月",

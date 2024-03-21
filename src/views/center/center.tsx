@@ -1,5 +1,5 @@
-import { __tableColumn, __tableOptionsCallback } from "dk-vue-components";
-import { onMounted, ref } from "vue";
+import { __tableColumn, __tableLoading, __tableOptionsCallback, __tablePagination } from "dk-vue-components";
+import { onMounted, reactive, ref } from "vue";
 const tableData = ref([
     {
         date: "2020-02-20",
@@ -35,11 +35,39 @@ const tableColumns = ref<__tableColumn[]>([
         width: 180,
     },
 ]);
+const loading: __tableLoading = reactive({
+    loading: false,
+    background: 'rgba(255, 255, 255, .5)',
+    tip: '正在加载数据。。。',
+    svg: {
+        position: "-10, -10, 50, 50",
+        src: `
+        <path class="path" d="
+        M 30 15
+        L 28 17
+        M 25.61 25.61
+        A 15 15, 0, 0, 1, 15 30
+        A 15 15, 0, 1, 1, 27.99 7.5
+        L 15 15
+        " style="stroke-width: 4px; fill: rgba(0, 0, 0, 0)"/>
+        `
+    }
+})
+const pagination: __tablePagination = reactive({
+    page: 1,
+    limit: 10,
+    total: 100,
+    pageSize: [10, 25, 50, 100]
+})
 function dkTableOptions(): __tableOptionsCallback {
-
     return {
-        tableData: tableData,
+        tableData,
         tableColumns,
+        pagination,
+        loading,
+        init:()=>{
+            console.log('init')
+        }
     };
 }
 export {
