@@ -1,4 +1,4 @@
-import { __tableColumn, __tableLoading, __tableOptionsCallback, __tablePagination } from "dk-vue-components";
+import { dkTableColumn, dkTableLoading, dkTableOptionsCallback, dkTablePagination } from "dk-vue-components";
 import { onMounted, reactive, ref } from "vue";
 const tableData = ref([
     {
@@ -14,14 +14,13 @@ const tableData = ref([
         age: "18",
     },
 ]);
-const tableColumns = ref<__tableColumn[]>([
+const tableColumns = ref<dkTableColumn[]>([
     {
         label: "测试日期",
         prop: "date",
         width: 180,
         cellRander({ row, column, $index }) {
-            console.log("🚀 -- 》》 ~  row, column, $index:", row, column, $index)
-
+            // console.log("🚀 -- 》》 ~  row, column, $index:", row, column, $index)
         },
     },
     {
@@ -35,7 +34,7 @@ const tableColumns = ref<__tableColumn[]>([
         width: 180,
     },
 ]);
-const loading: __tableLoading = reactive({
+const loading: dkTableLoading = reactive({
     loading: false,
     background: 'rgba(255, 255, 255, .5)',
     tip: '正在加载数据。。。',
@@ -53,13 +52,13 @@ const loading: __tableLoading = reactive({
         `
     }
 })
-const pagination: __tablePagination = reactive({
+const pagination: dkTablePagination = reactive({
     page: 1,
     limit: 10,
     total: 100,
     pageSize: [10, 25, 50, 100]
 })
-function dkTableOptions(): __tableOptionsCallback {
+function dkTableOptions() {
     return {
         tableData,
         tableColumns,

@@ -1,9 +1,9 @@
 import { mall } from '@/api'
-import { __tableOptionsCallback, __tableColumn, __tableLoading, __tablePagination, __tableInit } from 'dk-vue-components'
+import { dkTableOptionsCallback, dkTableColumn, dkTableLoading, dkTablePagination, dkTableInit } from 'dk-vue-components'
 import { onMounted, reactive, ref } from 'vue'
 export default () => {
     const tableData = ref([])
-    const init = async (value?: __tableInit) => {
+    const init = async (value?: dkTableInit) => {
         loading.loading = true
         const res = await mall.goodsList(value)
         setTimeout(() => {
@@ -15,7 +15,7 @@ export default () => {
     onMounted(() => {
         init()
     })
-    const loading: __tableLoading = reactive({
+    const loading: dkTableLoading = reactive({
         loading: false,
         background: 'rgba(255, 255, 255, .5)',
         tip: '正在加载数据。。。',
@@ -33,13 +33,13 @@ export default () => {
             `
         }
     })
-    const pagination: __tablePagination = reactive({
+    const pagination: dkTablePagination = reactive({
         page: 1,
         limit: 10,
         total: 100,
         pageSize: [10, 25, 50, 100]
     })
-    const tableColumns: __tableColumn[] = [
+    const tableColumns: dkTableColumn[] = [
         {
             label: '商品名称',
             prop: 'name',
@@ -118,5 +118,5 @@ export default () => {
         loading,
         init,
         pagination
-    } as __tableOptionsCallback
+    } as dkTableOptionsCallback
 } 

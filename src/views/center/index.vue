@@ -1,20 +1,20 @@
 <script setup lang="ts">
 import { dkForm, dkTable } from "@/components/dk-vue-components";
 import {
-	__tableOptionsCallback,
-	__dkItemSelectOptions,
-	__dkFormOptions,
-__tableColumn,
-__dkFormRef
+	dkTableOptionsCallback,
+	dkItemSelectOptions,
+	dkFormOptions,
+dkTableColumn,
+dkFormRef
 } from "dk-vue-components/type";
 import { onMounted, ref } from "vue";
 import { rootUrl } from "@/api";
 import {dkTableOptions,tableColumns,tableData} from './center' 
 
 onMounted(() => {});
-const formRef = ref<__dkFormRef>();
+const formRef = ref<dkFormRef>();
 const size = ref<any>("small");
-const mallFormOption = ref<__dkItemSelectOptions[]>([
+const mallFormOption = ref<dkItemSelectOptions[]>([
 	{
 		label: "多选选项1",
 		value: "1",
@@ -140,7 +140,7 @@ const dkFormOption = [
 			},
 		},
 	},
-] as __dkFormOptions;
+] as dkFormOptions;
 const addColumns = () => {
 	tableColumns.value.push({
 		label: "年龄",
