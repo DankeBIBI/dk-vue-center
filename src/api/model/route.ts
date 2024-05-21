@@ -13,10 +13,25 @@ export const route = connectStraw({
             e
         }),
         /**用户路由列表 */
-        userRouteList: (e?: pageOptions) => ({
-            url: "/route/userRouteList",
+        userRouteList: (e?: {
+            u_id?: number
+        } & Partial<pageOptions>) => ({
+            url: "/route/GetUserRoute",
             method: "GET",
             e
         }),
+        /**用户路由列表 */
+        addRoute: (e?: pageOptions) => ({
+            url: "/route/addRoute",
+            method: "POST",
+            e
+        }),
+        /**删除路由 */
+        deleteRoute: (e: {
+            route_id: number
+        }) => ({
+            url: 'route/deleteRoute',
+            method: 'GET'
+        })
     }
 })

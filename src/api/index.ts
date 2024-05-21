@@ -1,5 +1,6 @@
 import { connectStraw } from "strap-trousers";
 import { config } from './config'
+import axios from "axios";
 export const api = connectStraw({
     config: {
         name: "api",

@@ -1,4 +1,5 @@
-import { dkTableColumn, dkTableLoading, dkTableOptionsCallback, dkTablePagination } from "dk-vue-components";
+// import { dkTableColumn, dkTableLoading, dkTableOptionsCallback, dkTablePagination } from "dk-vue-components";
+import { dkTableColumn, dkTableLoading, dkTableOptionsCallback, dkTablePagination } from "@/components/dk-components";
 import { onMounted, reactive, ref } from "vue";
 const tableData = ref([
     {
@@ -19,9 +20,9 @@ const tableColumns = ref<dkTableColumn[]>([
         label: "测试日期",
         prop: "date",
         width: 180,
-        cellRander({ row, column, $index }) {
-            // console.log("🚀 -- 》》 ~  row, column, $index:", row, column, $index)
-        },
+        // cellRander({ row, column, $index }) {
+        //     // console.log("🚀 -- 》》 ~  row, column, $index:", row, column, $index)
+        // },
     },
     {
         label: "名字",

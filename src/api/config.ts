@@ -1,11 +1,12 @@
 import { showTip } from "@/utils";
+import axios from "axios";
 
 export type pageOptions = {
     page: number;
     limit: number;
 }
 export const rootUrl = import.meta.env.DEV
-    ? "http://localhost:8202/"
+    ? "http://192.168.31.190:8202/"
     : "https://api.dankebibi.cc/";
 // export const rootUrl = 'https://api.dankebibi.cc/'
 export const config = {
@@ -23,4 +24,5 @@ export const config = {
             showTip(e.response.data.msg, "error");
         },
     },
+    lib: axios,
 }

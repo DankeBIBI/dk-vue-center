@@ -1,22 +1,28 @@
 <script lang="ts">
-import axios from "axios";
 import { defineComponent } from "vue";
-import { checkIsMobile, public_config } from "./layout/layout.config";
+import { checkIsMobile } from "./layout/layout.config";
+import dkDialogVue from "@/components/dk-components/dk-dialog/index.vue";
 export default defineComponent({
 	name: "app",
+	components: {
+		dkDialogVue,
+	},
+	data() {
+		return {
+			dialogStore: [],
+		};
+	},
 	created: async () => {
-		try {
-			axios.get("https://api.dankebibi.cc");
-		} catch (e) {
-			console.error(e);
-		}
 		checkIsMobile();
 		window.addEventListener("resize", checkIsMobile);
 	},
 });
 </script>
 <template>
-	<router-view />
+	<div>
+		<router-view />
+		<dk-dialog-vue :store="dialogStore" />
+	</div>
 </template>
 
 <style scoped></style>

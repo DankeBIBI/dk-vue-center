@@ -1,5 +1,5 @@
 import { route } from '@/api'
-import { dkTableOptionsCallback, dkTableColumn, dkTableLoading, dkTablePagination, dkTableInit } from 'dk-vue-components'
+import { dkTableOptionsCallback, dkTableColumn, dkTableLoading, dkTablePagination, dkTableInit } from '@/components/dk-components'
 import { onMounted, reactive, ref } from 'vue'
 export default () => {
     const tableData = ref([])
@@ -7,7 +7,8 @@ export default () => {
         loading.loading = true
         const res = await route.userRouteList(value)
         setTimeout(() => {
-            tableData.value = res.data
+            pagination.total = res.data.count
+            tableData.value = res.data.rows
             loading.loading = false
         }, 600);
     }
@@ -69,6 +70,7 @@ export default () => {
         tableData,
         init,
         loading,
-        pagination
-    } as dkTableOptionsCallback
+        pagination,
+        add:()=>{}
+    }
 } 
