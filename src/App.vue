@@ -1,6 +1,6 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { checkIsMobile } from "./layout/layout.config";
+import { watchIsMobile } from "./layout/layout.config";
 import dkDialogVue from "@/components/dk-components/dk-dialog/index.vue";
 export default defineComponent({
 	name: "app",
@@ -13,8 +13,8 @@ export default defineComponent({
 		};
 	},
 	created: async () => {
-		checkIsMobile();
-		window.addEventListener("resize", checkIsMobile);
+		watchIsMobile();
+		window.addEventListener("resize", watchIsMobile);
 	},
 });
 </script>

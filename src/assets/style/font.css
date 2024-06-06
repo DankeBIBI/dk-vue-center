@@ -1,0 +1,125 @@
+@font-face {
+    font-family: "icon"; /* Project id 3889873 */
+    src: url('//at.alicdn.com/t/c/font_3889873_kpnsig0w6mj.ttf?t=1717646444004') format('truetype');
+  }
+  
+  .icon {
+    font-family: "icon" !important;
+    font-size: 16px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  .month:before {
+    content: "\e668";
+  }
+  
+  .radio:before {
+    content: "\e676";
+  }
+  
+  .upload:before {
+    content: "\e62a";
+  }
+  
+  .select:before {
+    content: "\e602";
+  }
+  
+  .checkbox:before {
+    content: "\e600";
+  }
+  
+  .input:before {
+    content: "\e629";
+  }
+  
+  .date:before {
+    content: "\e670";
+  }
+  
+  .year:before {
+    content: "\e85a";
+  }
+  
+  .pintu1:before {
+    content: "\f0e2";
+  }
+  
+  .xiaoxi:before {
+    content: "\f89e";
+  }
+  
+  .shouye:before {
+    content: "\f895";
+  }
+  
+  .tupian:before {
+    content: "\f896";
+  }
+  
+  .heart-fill:before {
+    content: "\e849";
+  }
+  
+  .message-fill:before {
+    content: "\e84a";
+  }
+  
+  .fire-fill:before {
+    content: "\e866";
+  }
+  
+  .home-fill:before {
+    content: "\e867";
+  }
+  
+  .location-fill:before {
+    content: "\e868";
+  }
+  
+  .eye-fill:before {
+    content: "\e869";
+  }
+  
+  .like-fill:before {
+    content: "\e86a";
+  }
+  
+  .lock-fill:before {
+    content: "\e86b";
+  }
+  
+  .unlock-fill:before {
+    content: "\e86c";
+  }
+  
+  .tags-fill:before {
+    content: "\e86e";
+  }
+  
+  .camera-fill:before {
+    content: "\e86f";
+  }
+  
+  .github-fill:before {
+    content: "\e885";
+  }
+  
+  .shezhi:before {
+    content: "\f89c";
+  }
+  
+  .renwu:before {
+    content: "\f8a3";
+  }
+  
+  .shoucang:before {
+    content: "\f8a4";
+  }
+  
+  .sousuo:before {
+    content: "\f8b0";
+  }
+  

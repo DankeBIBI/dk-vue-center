@@ -5,8 +5,13 @@ export type pageOptions = {
     page: number;
     limit: number;
 }
+export type responseData = {
+    msg: string;
+    code: 1 | 0;
+    data: any;
+}
 export const rootUrl = import.meta.env.DEV
-    ? "http://192.168.31.190:8202/"
+    ? "http://127.0.0.1:8202/"
     : "https://api.dankebibi.cc/";
 // export const rootUrl = 'https://api.dankebibi.cc/'
 export const config = {
@@ -14,11 +19,7 @@ export const config = {
     data: {
         appid: 1,
     },
-    responseData: {} as {
-        msg: string;
-        code: 1 | 0;
-        data: any;
-    },
+    responseData: {} as responseData,
     interceptors: {
         fail: (e) => {
             showTip(e.response.data.msg, "error");

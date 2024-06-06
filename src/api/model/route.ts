@@ -27,11 +27,27 @@ export const route = connectStraw({
             e
         }),
         /**删除路由 */
-        deleteRoute: (e: {
+        deleteRoute: (_e: {
             route_id: number
         }) => ({
             url: 'route/deleteRoute',
             method: 'GET'
+        }),
+        /**修改路由 */
+        updateRoute: (_e: Partial<updateRoute>) => ({
+            url: 'route/updateRoute',
+            method: 'POST'
         })
     }
 })
+
+type updateRoute = {
+    id: number
+    title: string
+    menu_name: string
+    active_route: string
+    url: string
+    component: string
+    parent_id: number
+    description: string
+}

@@ -1,5 +1,6 @@
 import { createApp } from "vue";
 import "./style.css";
+import "@/assets/style/font.css";
 import App from "./App.vue";
 import "strap-trousers/style/index.css";
 import { Route } from "./route";

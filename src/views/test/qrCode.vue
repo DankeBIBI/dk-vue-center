@@ -5,10 +5,10 @@ const qrcode = ref();
 const loading = ref(false);
 onMounted(async () => {});
 async function createQrCode() {
-	loading.value = true;
-	const res = await api.weChat.createQrCode();
-	if (res.code == 1) qrcode.value = res.data;
-	loading.value = false;
+	// loading.value = true;
+	// const res = await api.weChat.createQrCode();
+	// if (res.code == 1) qrcode.value = res.data;
+	// loading.value = false;
 }
 </script>
 <template>

@@ -2,6 +2,7 @@ import { route } from '@/api'
 import { dkTableColumn, dkTableLoading, dkTablePagination, dkTableInit, dkForm } from '@/components/dk-components'
 import { addDkDialog, closeDkDialog, showModal } from '@/components/dk-components/dk-dialog/rander'
 import { PUBLIC_LOADING_SVG } from '@/config'
+import { showTip } from '@/utils'
 import { onMounted, reactive, ref } from 'vue'
 export default () => {
     const tableData = ref([])
@@ -164,9 +165,12 @@ export default () => {
             async confirm(e) {
                 const res = await e.getFormParams()
                 if (res) {
-                    const r = await route.addRoute(res)
+                    res.id = row?.id ?? ''
+                    const r = type == 'add' ? await route.addRoute(res) : await route.updateRoute(res)
                     if (r.code == 1) {
                         init()
+                        e.close()
+                        showTip(r.msg,'success')
                     }
                 }
             },

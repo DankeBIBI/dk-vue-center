@@ -3,6 +3,7 @@ import { onMounted, reactive, ref } from "vue";
 import { Lock, Refresh, User } from "@element-plus/icons-vue";
 import { UserStore } from "@/store/user";
 import { gsap } from "gsap";
+import { showTip } from "@/utils";
 // import qrcode from 'qrcodejs2-fix';
 // import { h } from 'vue'
 // import { ElNotification } from 'element-plus'
@@ -25,12 +26,16 @@ onMounted(() => {
 		ease: "elastic.out(1,0.5)",
 		duration: 1.5,
 	});
-	tl.from(".phone", {
-		opacity: 0,
-		y: 100,
-		ease: "elastic.out(1,0.5)",
-		duration: 1,
-	},"<");
+	tl.from(
+		".phone",
+		{
+			opacity: 0,
+			y: 100,
+			ease: "elastic.out(1,0.5)",
+			duration: 1,
+		},
+		"<"
+	);
 	tl.from(
 		".fnBtn",
 		{ opacity: 0, x: 100, ease: "elastic.out(1,0.5)", duration: 1 },
@@ -106,8 +111,17 @@ const loginForm = reactive({
 });
 async function login() {
 	btnLoading.value = true;
-	await UserStore().Login(loginForm);
-	btnLoading.value = false;
+	try {
+		const state = await UserStore().Login(loginForm);
+		btnLoading.value = false;
+		showTip(state.msg, state.code != 1 ? "error" : "success");
+	} catch (e: any) {
+		showTip(e.msg, e.code != 1 ? "error" : "success");
+		btnLoading.value = false;
+	}
+	// if(state.code == 1){
+	//     ShadowRoot
+	// }
 }
 </script>
 <template>
