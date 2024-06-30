@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import  dkTable  from "@/components/dk-components/dk-table";
+import {dkTable} from "@/components";
 import config from "./config";
 </script>
 <template>
