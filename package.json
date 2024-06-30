@@ -25,7 +25,7 @@
     "strap-trousers": "^1.0.95",
     "tinymce": "^6.8.2",
     "tinymce-i18n": "^23.12.19",
-    "unplugin-auto-import": "^0.17.6",
+    "unplugin-auto-import": "^0.14.4",
     "vue": "^3.3.11",
     "vue-draggable-plus": "^0.5.0",
     "vue-router": "^4.2.5"
