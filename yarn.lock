@@ -1283,10 +1283,10 @@ destr@^2.0.3:
   resolved "https://registry.yarnpkg.com/destr/-/destr-2.0.3.tgz#7f9e97cb3d16dbdca7be52aca1644ce402cfe449"
   integrity sha512-2N3BOUU4gYMpTP24s5rF5iP7BDr7uNTCs4ozw3kf/eKfvWSIu93GEBi5m427YoyJoeOzQ5smuu4nNAPGb8idSQ==
 
-dk-vue3-components@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/dk-vue3-components/-/dk-vue3-components-1.0.0.tgz#8d341d4656b9e33fba492768ae00f784e76fb391"
-  integrity sha512-g4w5zT8gBSeKew7jeegnKnurSewdYEnPVTXU23bUjcEpQeMY2ydeEg205dNGMiNWp5QmMBGNmpuNL2xw9elXQg==
+dk-vue3-components@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/dk-vue3-components/-/dk-vue3-components-1.0.1.tgz#17887f064b08e2b13090ef963605ed7eea034b02"
+  integrity sha512-Px6ZFVq4X64KbAI2DoCDL6UjHUyVdrjwDT+pcy+hzGt8sKkAJ2Jp8oPNqY2YnlBC/8zGUFrgW23B31EXbprfhg==
 
 dotenv@^16.4.5:
   version "16.4.5"
