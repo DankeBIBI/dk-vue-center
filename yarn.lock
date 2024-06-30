@@ -1251,11 +1251,6 @@ csstype@^3.1.3:
   resolved "https://registry.npmmirror.com/csstype/-/csstype-3.1.3.tgz#d80ff294d114fb0e6ac500fbf85b60137d7eff81"
   integrity sha512-M1uQkMl8rQK/szD0LNhtqxIPLpimGm8sOBwU7lLnCpSbTyY3yeU1Vc7l4KT5zT4s/yOxHH5O7tIuuLOCnLADRw==
 
-data-uri-to-buffer@^4.0.0:
-  version "4.0.1"
-  resolved "https://registry.yarnpkg.com/data-uri-to-buffer/-/data-uri-to-buffer-4.0.1.tgz#d8feb2b2881e6a4f58c2e08acfd0e2834e26222e"
-  integrity sha512-0R9ikRb668HB7QDxT1vkpuUBtqc53YyAwMwGeUFKRojY/NWKvdZ+9UYtRfGmhqNbRkTSVpMbmyhXipFFv2cb/A==
-
 dayjs@^1.11.3:
   version "1.11.10"
   resolved "https://registry.npmmirror.com/dayjs/-/dayjs-1.11.10.tgz#68acea85317a6e164457d6d6947564029a6a16a0"
@@ -1423,14 +1418,6 @@ fastq@^1.6.0:
   dependencies:
     reusify "^1.0.4"
 
-fetch-blob@^3.1.2, fetch-blob@^3.1.4:
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/fetch-blob/-/fetch-blob-3.2.0.tgz#f09b8d4bbd45adc6f0c20b7e787e793e309dcce9"
-  integrity sha512-7yAQpD2UMJzLi1Dqv7qFYnPbaPx7ZfFK6PiIxQ4PfkGPyNyl2Ugx+a/umUonmKqjhM4DnfbMvdX6otXq83soQQ==
-  dependencies:
-    node-domexception "^1.0.0"
-    web-streams-polyfill "^3.0.3"
-
 fill-range@^7.0.1:
   version "7.0.1"
   resolved "https://registry.npmmirror.com/fill-range/-/fill-range-7.0.1.tgz#1919a6a7c75fe38b2c7c77e5198535da9acdda40"
@@ -1458,13 +1445,6 @@ form-data@^4.0.0:
     asynckit "^0.4.0"
     combined-stream "^1.0.8"
     mime-types "^2.1.12"
-
-formdata-polyfill@^4.0.10:
-  version "4.0.10"
-  resolved "https://registry.yarnpkg.com/formdata-polyfill/-/formdata-polyfill-4.0.10.tgz#24807c31c9d402e002ab3d8c720144ceb8848423"
-  integrity sha512-buewHzMvYL29jdeQTVILecSaZKnt/RJWjoZCF5OW60Z67/GmSLBkOFM7qh1PI3zFNtJbaZL5eQu1vLfazOwj4g==
-  dependencies:
-    fetch-blob "^3.1.2"
 
 fs-minipass@^2.0.0:
   version "2.1.0"
@@ -1555,11 +1535,6 @@ html-tags@^3.3.1:
   version "3.3.1"
   resolved "https://registry.npmmirror.com/html-tags/-/html-tags-3.3.1.tgz#a04026a18c882e4bba8a01a3d39cfe465d40b5ce"
   integrity sha512-ztqyC3kLto0e9WbNp0aeP+M3kTt+nbaIveGmUxAtZa+8iFgKLUOD4YKM5j+f3QD89bra7UeumolZHKuOXnTmeQ==
-
-http@^0.0.1-security:
-  version "0.0.1-security"
-  resolved "https://registry.npmmirror.com/http/-/http-0.0.1-security.tgz#3aac09129d12dc2747bbce4157afde20ad1f7995"
-  integrity sha512-RnDvP10Ty9FxqOtPZuxtebw1j4L/WiqNMDtuc1YMH1XQm5TgDRaR1G9u8upL6KD1bXHSp9eSXo/ED+8Q7FAr+g==
 
 human-signals@^5.0.0:
   version "5.0.0"
@@ -1829,24 +1804,10 @@ nanoid@^3.3.7:
   resolved "https://registry.npmmirror.com/nanoid/-/nanoid-3.3.7.tgz#d0c301a691bc8d54efa0a2226ccf3fe2fd656bd8"
   integrity sha512-eSRppjcPIatRIMC1U6UngP8XFcz8MQWGQdt1MTBQ7NaAmvXDfvNxbvWV3x2y6CdEUciCSsDHDQZbhYaB8QEo2g==
 
-node-domexception@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/node-domexception/-/node-domexception-1.0.0.tgz#6888db46a1f71c0b76b3f7555016b63fe64766e5"
-  integrity sha512-/jKZoMpw0F8GRwl4/eLROPA3cfcXtLApP0QzLmUT/HuPCZWyB7IY9ZrMeKw2O/nFIqPQB3PVM9aYm0F312AXDQ==
-
 node-fetch-native@^1.6.3:
   version "1.6.4"
   resolved "https://registry.yarnpkg.com/node-fetch-native/-/node-fetch-native-1.6.4.tgz#679fc8fd8111266d47d7e72c379f1bed9acff06e"
   integrity sha512-IhOigYzAKHd244OC0JIMIUrjzctirCmPkaIfhDeGcEETWof5zKYUW7e7MYvChGWh/4CJeXEgsRyGzuF334rOOQ==
-
-node-fetch@^3.3.2:
-  version "3.3.2"
-  resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-3.3.2.tgz#d1e889bacdf733b4ff3b2b243eb7a12866a0b78b"
-  integrity sha512-dRB78srN/l6gqWulah9SrxeYnxeddIG30+GOqK/9OlLVyLg3HPnr6SqOWTWOXKRwC2eGYCkZ59NNuSgvSrpgOA==
-  dependencies:
-    data-uri-to-buffer "^4.0.0"
-    fetch-blob "^3.1.4"
-    formdata-polyfill "^4.0.10"
 
 node-releases@^2.0.14:
   version "2.0.14"
@@ -2095,13 +2056,10 @@ std-env@^3.7.0:
   resolved "https://registry.yarnpkg.com/std-env/-/std-env-3.7.0.tgz#c9f7386ced6ecf13360b6c6c55b8aaa4ef7481d2"
   integrity sha512-JPbdCEQLj1w5GilpiHAx3qJvFndqybBysA3qUOnznweH4QbNYUsW/ea8QzSrnh0vNsezMMw5bcVool8lM0gwzg==
 
-strap-trousers@^1.0.95:
-  version "1.0.95"
-  resolved "https://registry.yarnpkg.com/strap-trousers/-/strap-trousers-1.0.95.tgz#ab159141783c669fd360addda326faf329df5de5"
-  integrity sha512-E/XgWhSAw5QgXxmlIBtuw2pNZHQrTrwJCcQUtBLS75Z1xv7sYBTSH2dGtEjsSYWzMhUfUxgf/dVHwaq+YMylAA==
-  dependencies:
-    http "^0.0.1-security"
-    node-fetch "^3.3.2"
+strap-trousers@^1.1.3:
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/strap-trousers/-/strap-trousers-1.1.3.tgz#4a7ca160b1464f75f79eaea589920f604f1e3180"
+  integrity sha512-aQ8JxnRCceMvkLBykwzodL6i72ZBLQjKFwWvhLaqVAbC3OZqamiaxRM1TeJgCW6Q+3kZqm4OrcltNWVNgeQR9w==
 
 strip-final-newline@^3.0.0:
   version "3.0.0"
@@ -2348,11 +2306,6 @@ vue@^3.3.11:
     "@vue/runtime-dom" "3.4.19"
     "@vue/server-renderer" "3.4.19"
     "@vue/shared" "3.4.19"
-
-web-streams-polyfill@^3.0.3:
-  version "3.3.3"
-  resolved "https://registry.yarnpkg.com/web-streams-polyfill/-/web-streams-polyfill-3.3.3.tgz#2073b91a2fdb1fbfbd401e7de0ac9f8214cecb4b"
-  integrity sha512-d2JWLCivmZYTSIoge9MsgFCZrt571BikcWGYkjC1khllbTeDlGqZ2D8vD8E/lJa8WGWbb7Plm8/XJYV7IJHZZw==
 
 webpack-sources@^3.2.3:
   version "3.2.3"

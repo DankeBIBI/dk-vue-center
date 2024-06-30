@@ -22,7 +22,7 @@
     "path": "^0.12.7",
     "pinia": "^2.1.7",
     "sass": "^1.69.5",
-    "strap-trousers": "^1.0.95",
+    "strap-trousers": "^1.1.3",
     "tinymce": "^6.8.2",
     "tinymce-i18n": "^23.12.19",
     "unplugin-auto-import": "^0.14.4",
