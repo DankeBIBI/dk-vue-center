@@ -1,6 +1,5 @@
 import { Menu } from "@element-plus/icons-vue"
 import { Route } from '@/route'
-import { DKID } from 'strap-trousers'
 /**菜单 */
 export const MenuRander = (item: routeListDto, index: number) => (
     <>
@@ -13,7 +12,13 @@ export const MenuRander = (item: routeListDto, index: number) => (
     </>
 )
 /**菜单项 */
-const menuItemRander = (item: routeListDto, index: number, is_sub?: any) => (
+const menuItemRander = (
+    /**路由项 */
+    item: routeListDto,
+    /**标记 */
+    index: number,
+    /**是否为次级菜单 */
+    is_sub?: any) => (
     <>
         <el-menu-item key={index}
             index={is_sub ? index + '-' + 1 : index + 1}
@@ -38,7 +43,12 @@ const menuItemRander = (item: routeListDto, index: number, is_sub?: any) => (
     </>
 )
 /**可展开菜单 */
-const subMenuRander = (item: routeListDto, index: number) => (
+const subMenuRander = (
+    /**路由项 */
+    item: routeListDto,
+    /**标记 */
+    index: number,
+) => (
     <>
         {
             <el-sub-menu
@@ -58,6 +68,7 @@ const subMenuRander = (item: routeListDto, index: number) => (
                         default: () => (
                             <>
                                 {
+                                    // menuItemRander(item, index)
                                     item.children && item.children.length > 0 && item.children.map((sub_item, sub_index) => {
                                         return (
                                             <>

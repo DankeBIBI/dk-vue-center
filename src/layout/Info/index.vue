@@ -12,7 +12,7 @@ onMounted(() => {
 <template>
 	<div class="InfoBox fx_y">
 		<el-image class="logo" :src="UserStore().userInfo?.app?.logo" />
-		<h2 class="app_name">{{ UserStore().userInfo?.app?.app_name }}</h2>
+		<h2 class="app_name">{{ UserStore().userInfo?.u_name }}</h2>
 	</div>
 </template>
 <style lang="scss" scoped>

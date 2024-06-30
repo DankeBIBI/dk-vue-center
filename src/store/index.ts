@@ -6,6 +6,7 @@ const useAppStore = defineStore('AppStore', {
             import.meta.glob('@/views/*.vue'),
             import.meta.glob('@/views/*/*.vue'),
             import.meta.glob('@/views/*/*/*.vue'),
+            import.meta.glob('@/views/*/*/*/*.vue'),
         ],
         /**路由列表 */
         routeList: [] as routeListDto[]

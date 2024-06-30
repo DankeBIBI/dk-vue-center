@@ -7,9 +7,13 @@ import { initRoute } from "@/route/utils";
 const useUser = defineStore("User", {
     state: () => ({
         /**用户信息 */
-        userInfo: {} as any
+        userInfo: {} as {
+            app:any,
+            u_name:string
+        }
     }),
     actions: {
+        /**登录 */
         async Login(form: any, route_name?: string): Promise<responseData> {
             return new Promise<responseData>(async (resolve, reject) => {
                 try {
@@ -23,7 +27,7 @@ const useUser = defineStore("User", {
                 } catch (e) {
                     reject({
                         code: 0,
-                        data: {},
+                        data: e,
                         msg: '请求失败'
                     } as responseData)
                 }

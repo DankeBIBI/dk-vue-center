@@ -1,5 +1,5 @@
 import { mall } from '@/api'
-import { dkTableOptionsCallback, dkTableColumn, dkTableLoading, dkTablePagination, dkTableInit } from 'dk-vue-components'
+import { dkTableOptionsCallback, dkTableColumn, dkTableLoading, dkTablePagination, dkTableInit } from 'dk-vue3-components'
 import { onMounted, reactive, ref } from 'vue'
 export default () => {
     const tableData = ref([])

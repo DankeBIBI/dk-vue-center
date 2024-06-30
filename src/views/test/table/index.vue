@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { dkTable } from "dk-vue-components";
+import { dkTable } from "dk-vue3-components";
 import { onMounted } from "vue";
 import config from './config'
 onMounted(() => {});

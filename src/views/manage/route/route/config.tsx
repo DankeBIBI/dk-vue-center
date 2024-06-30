@@ -170,7 +170,7 @@ export default () => {
                     if (r.code == 1) {
                         init()
                         e.close()
-                        showTip(r.msg, 'success')
+                        showTip(r.msg,'success')
                     }
                 }
             },

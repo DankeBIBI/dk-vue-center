@@ -1,10 +1,11 @@
-import { mall } from '@/api'
+import { property } from '@/api/model/property'
+import { CreatePropertyInfoDto } from '@/api/type/property.dto'
 import { dkTableColumn, dkTableInit, dkTableLoading, dkTablePagination } from '@/components'
 export default () => {
-    const tableData = ref([])
+    const tableData = ref<CreatePropertyInfoDto[]>([])
     const init = async (value?: dkTableInit) => {
         loading.loading = true
-        const res = await mall.goodsList(value)
+        const res = await property.getAllProperty(value)
         setTimeout(() => {
             tableData.value = res.data.rows
             pagination.total = res.data.count
@@ -40,46 +41,95 @@ export default () => {
     })
     const tableColumns: dkTableColumn[] = [
         {
-            label: '商品名称',
-            prop: 'name',
-            width: 300,
-            tooltip: true
+            label: 'ID',
+            prop: 'id',
+            width: 50
         },
         {
-            label: '短名称',
-            prop: 'mini_name',
+            label: '房源名称',
+            prop: 'property_name',
             width: 300
         },
         {
-            label: '价格',
+            label: '房型',
+            prop: 'layout',
+            width: 100
+        },
+        {
+            label: '总售价',
             prop: 'price',
+            width: 150
         },
         {
-            label: '原价格',
-            prop: 'source_price',
+            label: '建筑面积',
+            prop: 'area',
+            width: 150
         },
         {
-            label: '库存',
-            prop: 'stock',
+            label: '每平米单价',
+            prop: 'unit_price',
+            width: 150
         },
         {
-            label: '商品图',
-            prop: 'pic',
-            cellRander: ({ row }) => (
-
-                <>
-                    <el-image preview-teleported preview-src-list={[row.pic]} src={row.pic} style="width:60px;height:60px" />
-                </>
-
-            )
+            label: '楼层',
+            prop: 'floor',
+            width: 150
         },
         {
-            label: '以出售数量',
-            prop: 'sales',
+            label: '朝向',
+            prop: 'orientation',
+            width: 100
         },
         {
-            label: '分类',
-            prop: 'sort',
+            label: '是否有电梯',
+            prop: 'elevator',
+            width: 100,
+        },
+        {
+            label: '权属',
+            prop: 'ownership',
+            width: 100
+        },
+        {
+            label: '楼型',
+            prop: 'building_type',
+            width: 100
+        },
+        {
+            label: '类型',
+            prop: 'property_type',
+            width: 100
+        },
+        {
+            label: '装修情况',
+            prop: 'decoration',
+            width: 150
+        },
+        {
+            label: '挂牌日期',
+            prop: 'listing_date',
+            width: 150
+        },
+        {
+            label: '小区名称',
+            prop: 'community',
+            width: 200
+        },
+        {
+            label: '联系人姓名',
+            prop: 'contact_person',
+            width: 150
+        },
+        {
+            label: '联系方式',
+            prop: 'contact_info',
+            width: 150
+        },
+        {
+            label: '备注',
+            prop: 'remarks',
+            width: 300,
+            tooltip: true
         },
         {
             label: '状态',
@@ -109,7 +159,7 @@ export default () => {
                 </>
             )
         }
-    ]
+    ];
     const Setting = (row) => {
 
     }

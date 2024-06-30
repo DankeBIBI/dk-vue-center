@@ -1,11 +1,11 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import { watchIsMobile } from "./layout/layout.config";
-import dkDialogVue from "@/components/dk-components/dk-dialog/index.vue";
+import { dkDialog } from "@/components";
 export default defineComponent({
 	name: "app",
 	components: {
-		dkDialogVue,
+		dkDialog,
 	},
 	data() {
 		return {
@@ -21,7 +21,7 @@ export default defineComponent({
 <template>
 	<div>
 		<router-view />
-		<dk-dialog-vue :store="dialogStore" />
+		<dk-dialog :store="dialogStore" />
 	</div>
 </template>
 

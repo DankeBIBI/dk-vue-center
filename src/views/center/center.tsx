@@ -1,6 +1,4 @@
-// import { dkTableColumn, dkTableLoading, dkTableOptionsCallback, dkTablePagination } from "dk-vue-components";
-import { dkTableColumn, dkTableLoading, dkTableOptionsCallback, dkTablePagination } from "@/components/dk-components";
-import { onMounted, reactive, ref } from "vue";
+import { dkTableColumn, dkTableLoading, dkTableOptionsCallback, dkTablePagination } from "@/components";
 const tableData = ref([
     {
         date: "2020-02-20",
@@ -20,9 +18,6 @@ const tableColumns = ref<dkTableColumn[]>([
         label: "测试日期",
         prop: "date",
         width: 180,
-        // cellRander({ row, column, $index }) {
-        //     // console.log("🚀 -- 》》 ~  row, column, $index:", row, column, $index)
-        // },
     },
     {
         label: "名字",
@@ -65,9 +60,10 @@ function dkTableOptions() {
         tableColumns,
         pagination,
         loading,
-        init:()=>{
+        init: () => {
             console.log('init')
-        }
+        },
+        add:()=>{}
     };
 }
 export {

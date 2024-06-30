@@ -1,12 +1,10 @@
 <script setup lang="ts">
-import { dkForm, dkTable } from "@/components/dk-vue-components";
+import { dkForm, dkTable } from "@/components";
 import {
-	dkTableOptionsCallback,
 	dkItemSelectOptions,
 	dkFormOptions,
-dkTableColumn,
 dkFormRef
-} from "dk-vue-components/type";
+} from "@/components";
 import { onMounted, ref } from "vue";
 import { rootUrl } from "@/api";
 import {dkTableOptions,tableColumns,tableData} from './center' 

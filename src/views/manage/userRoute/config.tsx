@@ -1,14 +1,15 @@
 import { route } from '@/api'
-import { dkTableOptionsCallback, dkTableColumn, dkTableLoading, dkTablePagination, dkTableInit } from '@/components/dk-components'
+import { dkTableOptionsCallback, dkTableColumn, dkTableLoading, dkTablePagination, dkTableInit } from '@/components'
 import { onMounted, reactive, ref } from 'vue'
 export default () => {
     const tableData = ref([])
     const init = async (value?: dkTableInit) => {
         loading.loading = true
         const res = await route.userRouteList(value)
+        console.log("🚀 -- 》》 ~ res:", res)
         setTimeout(() => {
             pagination.total = res.data.count
-            tableData.value = res.data.rows
+            tableData.value = res.data.rows.map(item=>item.route)
             loading.loading = false
         }, 600);
     }

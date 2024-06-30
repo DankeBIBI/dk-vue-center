@@ -1,5 +1,4 @@
-import { dkItemOptions } from "@/components/dk-components";
-import { dkItemOptionMap } from "@/components/dk-components/dk-form/type";
+import { dkItemOptions } from "@/components";
 import { ref } from "vue";
 
 export const formConfig = ref([
@@ -9,7 +8,7 @@ export const formConfig = ref([
         title: "输入框",
         content: "",
         type: "input",
-        prop: 'input'
+        prop: 'input',
     },
     {
         name: "radio",
@@ -98,9 +97,24 @@ export function ItemConversionOption(item: dkItemOptions) {
     let list = [] as dkItemOptions[]
     let whileItem = [
         'title',
-        "prop",
+        // "prop",
         'placeholder',
+        'selectOptions'
     ]
+    /**dkForm选项映射 */
+    const dkItemOptionMap = {
+        prop: "字段",
+        title: "标题",
+        content: "默认内容",
+        required: "是否必填",
+        type: "dk表单项类型",
+        selectOptions: "选项",
+        placeholder: "占位符",
+        options: "可选配置",
+        trigger: "触发器",
+        upload: "上传配置",
+        size: "尺寸",
+    }
     for (const key in item) {
         // 过滤掉不需要的属性
         if (!whileItem.includes(key)) continue
