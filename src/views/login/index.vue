@@ -114,7 +114,7 @@ async function login() {
 	try {
 		const state = await UserStore().Login(loginForm);
 		btnLoading.value = false;
-		showTip(state.msg, state.code != 1 ? "error" : "success");
+		// showTip(state.msg, state.code != 1 ? "error" : "success");
 	} catch (e: any) {
 		showTip(e.msg, e.code != 1 ? "error" : "success");
 		btnLoading.value = false;

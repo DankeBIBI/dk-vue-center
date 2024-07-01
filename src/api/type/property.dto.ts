@@ -36,5 +36,7 @@ export interface CreatePropertyInfoDto {
     /**其他备注信息，例如“净首付8万，月供见详情”，非必填*/
     remarks?: string;
     /**状态 */
-    state:number;
+    state: number;
+    /**图片组 */
+    pic: any
 }

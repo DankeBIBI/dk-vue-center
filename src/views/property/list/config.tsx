@@ -1,14 +1,21 @@
+import { rootUrl, route } from '@/api'
 import { property } from '@/api/model/property'
 import { CreatePropertyInfoDto } from '@/api/type/property.dto'
-import { dkTableColumn, dkTableInit, dkTableLoading, dkTablePagination } from '@/components'
+import { dkTableColumn, dkTableLoading, dkTablePagination, dkTableInit, dkForm, dkDialogStore, dkFormOptions } from '@/components/dk-components'
+import { addDkDialog, closeDkDialog, showModal, dkDialog } from '@/components'
+import { PUBLIC_LOADING_SVG } from '@/config'
+import { onMounted, reactive, ref } from 'vue'
+import { DKID } from 'strap-trousers'
+import { showTip } from '@/utils'
 export default () => {
     const tableData = ref<CreatePropertyInfoDto[]>([])
     const init = async (value?: dkTableInit) => {
+        console.log("🚀 -- 》》 ~ addDkDialog:", dkDialog)
         loading.loading = true
         const res = await property.getAllProperty(value)
         setTimeout(() => {
-            tableData.value = res.data.rows
             pagination.total = res.data.count
+            tableData.value = res.data.rows
             loading.loading = false
         }, 600);
     }
@@ -19,19 +26,7 @@ export default () => {
         loading: false,
         background: 'rgba(255, 255, 255, .5)',
         tip: '正在加载数据。。。',
-        svg: {
-            position: "-10, -10, 50, 50",
-            src: `
-            <path class="path" d="
-            M 30 15
-            L 28 17
-            M 25.61 25.61
-            A 15 15, 0, 0, 1, 15 30
-            A 15 15, 0, 1, 1, 27.99 7.5
-            L 15 15
-            " style="stroke-width: 4px; fill: rgba(0, 0, 0, 0)"/>
-            `
-        }
+        svg: PUBLIC_LOADING_SVG
     })
     const pagination: dkTablePagination = reactive({
         page: 1,
@@ -135,7 +130,7 @@ export default () => {
             label: '状态',
             prop: 'state',
             fixed: 'right',
-            width:130,
+            width: 130,
             cellRander: ({ row }) => (
                 <>
                     <el-button
@@ -152,22 +147,221 @@ export default () => {
             label: '操作',
             prop: 'action',
             fixed: "right",
-            width:130,
+            width: 130,
             cellRander: ({ row }) => (
                 <>
-                    <el-button type="primary" link onClick={Setting(row)}>编辑</el-button>
+                    <div class="fx_">
+
+                        <el-button type="primary" link onClick={() => edit(row)}>编辑</el-button>
+                        <el-button type="danger" link onClick={() => deleteRow(row)}>删除</el-button>
+                    </div>
                 </>
             )
         }
     ];
-    const Setting = (row) => {
+    function add() {
+        setting('add')
+    }
+    function edit(row) {
+        setting('edit', row)
+    }
+    function deleteRow(row) {
+        showModal({
+            title: '提示',
+            content: '是否删除' + row.property_name,
+            confirm: async (e) => {
+                const res = await property.removeProperty({ id: row.id })
+                showTip(res.msg, res.code == 1 ? 'success' : 'error',)
+                init()
+                e.close()
+            }
+        })
+
+    }
+    async function setting(type: "add" | "edit", row?: any) {
+        const res = ref()
+        addDkDialog({
+            title: '测试',
+            ref: res,
+            content: '测试',
+            type: 'form',
+            style: {
+                borderRadius: 20,
+                width: 800,
+            },
+            props: {
+                row: 2,
+                options: [
+                    {
+                        prop: 'property_name',
+                        type: 'input',
+                        title: '房源名称',
+                        content: row?.property_name ?? '',
+                        required: true
+                    },
+                    {
+                        prop: 'layout',
+                        type: 'input',
+                        title: '房型',
+                        content: row?.layout ?? '',
+                        required: true
+                    },
+                    {
+                        prop: 'price',
+                        type: 'input',
+                        title: '总售价',
+                        content: row?.price ?? '',
+                        required: true
+                    },
+                    {
+                        prop: 'area',
+                        type: 'input',
+                        title: '建筑面积',
+                        content: row?.area ?? '',
+                        required: true
+                    },
+                    {
+                        prop: 'unit_price',
+                        type: 'input',
+                        title: '每平米单价',
+                        content: row?.unit_price ?? '',
+                        required: true
+                    },
+                    {
+                        prop: 'floor',
+                        type: 'input',
+                        title: '楼层',
+                        content: row?.floor ?? '',
+                    },
+                    {
+                        prop: 'orientation',
+                        type: 'input',
+                        title: '朝向',
+                        content: row?.orientation ?? '',
+                    },
+                    {
+                        prop: 'elevator',
+                        type: 'select',
+                        title: '是否有电梯',
+                        content: row?.elevator ? '是' : '否',
+                        selectOptions: [
+                            { label: '是', value: 1 },
+                            { label: '否', value: 0 },
+                        ],
+                    },
+                    {
+                        prop: 'ownership',
+                        type: 'input',
+                        title: '权属',
+                        content: row?.ownership ?? '',
+                    },
+                    {
+                        prop: 'building_type',
+                        type: 'input',
+                        title: '楼型',
+                        content: row?.building_type ?? '',
+                    },
+                    {
+                        prop: 'property_type',
+                        type: 'input',
+                        title: '房源类型',
+                        content: row?.property_type ?? '',
+                    },
+                    {
+                        prop: 'decoration',
+                        type: 'input',
+                        title: '装修情况',
+                        content: row?.decoration ?? '',
+                    },
+                    {
+                        prop: 'listing_date',
+                        type: 'date',
+                        title: '挂牌日期',
+                        content: row?.listing_date ?? '',
+                    },
+                    {
+                        prop: 'community',
+                        type: 'input',
+                        title: '小区名称',
+                        content: row?.community ?? '',
+                    },
+                    {
+                        prop: 'contact_person',
+                        type: 'input',
+                        title: '联系人姓名',
+                        content: row?.contact_person ?? '',
+                    },
+                    {
+                        prop: 'contact_info',
+                        type: 'input',
+                        title: '联系方式',
+                        content: row?.contact_info ?? '',
+                    },
+                    {
+                        prop: 'remarks',
+                        type: 'input',
+                        title: '备注信息',
+                        content: row?.remarks ?? '',
+                    },
+                    {
+                        prop: 'state',
+                        type: 'radio',
+                        title: '状态',
+                        content: row?.state ?? '',
+                        selectOptions: [
+                            {
+                                label: '上架',
+                                value: 1,
+                            },
+                            {
+                                label: '下架',
+                                value: 0,
+                            },
+                        ]
+                    },
+                    {
+                        prop: 'pic',
+                        type: 'upload',
+                        title: '图片',
+                        content: row?.pic ?? [],
+                        style: 'flex:1;',
+                        upload: {
+                            file_list: row?.pic ? row.pic.map(item => {
+                                return {
+                                    url: item,
+                                    uid: Math.random(),
+                                }
+                            }) : [],
+                            url: rootUrl + 'upload/uploadFile',
+                            response(e: any) {
+                                return e.data
+                            },
+                            limit: 9
+                        }
+                    },
+                ] as dkFormOptions
+            },
+            async confirm(e) {
+                const params = await e.getFormParams()
+                if (params) {
+                    if (row?.id) params.id = row.id
+                    const res = type == 'add' ? await property.createProperty(params) : await property.updateProperty(params)
+                    showTip(res.msg, res.code == 1 ? 'success' : 'error',)
+                    if (res.code == 1) {
+                        e.close()
+                        init()
+                    }
+                }
+            },
+        })
 
     }
     return {
         tableColumns,
         tableData,
-        loading,
         init,
-        pagination
+        loading,
+        pagination,
+        add
     }
 } 

@@ -16,7 +16,7 @@
     "@types/gsap": "^3.0.0",
     "@types/node": "^20.10.5",
     "axios": "^1.6.5",
-    "dk-vue3-components": "^1.0.1",
+    "dk-vue3-components": "^1.0.2",
     "element-plus": "^2.4.4",
     "gsap": "^3.12.5",
     "path": "^0.12.7",

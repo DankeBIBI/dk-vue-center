@@ -8,9 +8,7 @@ export default defineComponent({
 		dkDialog,
 	},
 	data() {
-		return {
-			dialogStore: [],
-		};
+		return {};
 	},
 	created: async () => {
 		watchIsMobile();
@@ -21,7 +19,7 @@ export default defineComponent({
 <template>
 	<div>
 		<router-view />
-		<dk-dialog :store="dialogStore" />
+		<dk-dialog />
 	</div>
 </template>
 

@@ -9,6 +9,7 @@ export const property = connectStraw({
 
     },
     action: {
+        /**创建房源信息 */
         createProperty: {
             url: "property/createProperty",
             method: "POST",
@@ -16,6 +17,25 @@ export const property = connectStraw({
                 return "" as any
             }
         },
+        /**更新房源信息 */
+        updateProperty: {
+            url: "property/updateProperty",
+            method: "POST",
+            fn(_e: CreatePropertyInfoDto): res<any> {
+                return "" as any
+            }
+        },
+        /**删除房源信息 */
+        removeProperty: {
+            url: "property/removeProperty",
+            method: "GET",
+            fn(_e: {
+                id: any
+            }): res<any> {
+                return "" as any
+            }
+        },
+        /**获取房源详情 */
         getPropertyInfo: {
             url: "property/getPropertyInfo",
             method: "GET",
@@ -25,6 +45,7 @@ export const property = connectStraw({
                 } as any
             }
         },
+        /**获取所有房源 */
         getAllProperty: {
             url: "property/getAllProperty",
             method: "GET",
