@@ -9,7 +9,8 @@ const useUser = defineStore("User", {
         /**用户信息 */
         userInfo: {} as {
             app:any,
-            u_name:string
+            u_name:string,
+            head_url:string
         }
     }),
     actions: {

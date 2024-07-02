@@ -10,7 +10,6 @@ import { showTip } from '@/utils'
 export default () => {
     const tableData = ref<CreatePropertyInfoDto[]>([])
     const init = async (value?: dkTableInit) => {
-        console.log("🚀 -- 》》 ~ addDkDialog:", dkDialog)
         loading.loading = true
         const res = await property.getAllProperty(value)
         setTimeout(() => {
@@ -179,181 +178,186 @@ export default () => {
 
     }
     async function setting(type: "add" | "edit", row?: any) {
-        const res = ref()
-        addDkDialog({
-            title: '测试',
-            ref: res,
-            content: '测试',
-            type: 'form',
-            style: {
-                borderRadius: 20,
-                width: 800,
-            },
-            props: {
-                row: 2,
-                options: [
-                    {
-                        prop: 'property_name',
-                        type: 'input',
-                        title: '房源名称',
-                        content: row?.property_name ?? '',
-                        required: true
-                    },
-                    {
-                        prop: 'layout',
-                        type: 'input',
-                        title: '房型',
-                        content: row?.layout ?? '',
-                        required: true
-                    },
-                    {
-                        prop: 'price',
-                        type: 'input',
-                        title: '总售价',
-                        content: row?.price ?? '',
-                        required: true
-                    },
-                    {
-                        prop: 'area',
-                        type: 'input',
-                        title: '建筑面积',
-                        content: row?.area ?? '',
-                        required: true
-                    },
-                    {
-                        prop: 'unit_price',
-                        type: 'input',
-                        title: '每平米单价',
-                        content: row?.unit_price ?? '',
-                        required: true
-                    },
-                    {
-                        prop: 'floor',
-                        type: 'input',
-                        title: '楼层',
-                        content: row?.floor ?? '',
-                    },
-                    {
-                        prop: 'orientation',
-                        type: 'input',
-                        title: '朝向',
-                        content: row?.orientation ?? '',
-                    },
-                    {
-                        prop: 'elevator',
-                        type: 'select',
-                        title: '是否有电梯',
-                        content: row?.elevator ? '是' : '否',
-                        selectOptions: [
-                            { label: '是', value: 1 },
-                            { label: '否', value: 0 },
-                        ],
-                    },
-                    {
-                        prop: 'ownership',
-                        type: 'input',
-                        title: '权属',
-                        content: row?.ownership ?? '',
-                    },
-                    {
-                        prop: 'building_type',
-                        type: 'input',
-                        title: '楼型',
-                        content: row?.building_type ?? '',
-                    },
-                    {
-                        prop: 'property_type',
-                        type: 'input',
-                        title: '房源类型',
-                        content: row?.property_type ?? '',
-                    },
-                    {
-                        prop: 'decoration',
-                        type: 'input',
-                        title: '装修情况',
-                        content: row?.decoration ?? '',
-                    },
-                    {
-                        prop: 'listing_date',
-                        type: 'date',
-                        title: '挂牌日期',
-                        content: row?.listing_date ?? '',
-                    },
-                    {
-                        prop: 'community',
-                        type: 'input',
-                        title: '小区名称',
-                        content: row?.community ?? '',
-                    },
-                    {
-                        prop: 'contact_person',
-                        type: 'input',
-                        title: '联系人姓名',
-                        content: row?.contact_person ?? '',
-                    },
-                    {
-                        prop: 'contact_info',
-                        type: 'input',
-                        title: '联系方式',
-                        content: row?.contact_info ?? '',
-                    },
-                    {
-                        prop: 'remarks',
-                        type: 'input',
-                        title: '备注信息',
-                        content: row?.remarks ?? '',
-                    },
-                    {
-                        prop: 'state',
-                        type: 'radio',
-                        title: '状态',
-                        content: row?.state ?? '',
-                        selectOptions: [
-                            {
-                                label: '上架',
-                                value: 1,
-                            },
-                            {
-                                label: '下架',
-                                value: 0,
-                            },
-                        ]
-                    },
-                    {
-                        prop: 'pic',
-                        type: 'upload',
-                        title: '图片',
-                        content: row?.pic ?? [],
-                        style: 'flex:1;',
-                        upload: {
-                            file_list: row?.pic ? row.pic.map(item => {
-                                return {
-                                    url: item,
-                                    uid: Math.random(),
-                                }
-                            }) : [],
-                            url: rootUrl + 'upload/uploadFile',
-                            response(e: any) {
-                                return e.data
-                            },
-                            limit: 9
+        console.log("🚀 -- 》》 ~ type:", type)
+        const dkRef = ref()
+        try {
+            addDkDialog({
+                title: '测试',
+                ref: dkRef,
+                content: '测试',
+                type: 'form',
+                style: {
+                    borderRadius: 20,
+                    width: 800,
+                },
+                props: {
+                    row: 2,
+                    options: [
+                        {
+                            prop: 'property_name',
+                            type: 'input',
+                            title: '房源名称',
+                            content: row?.property_name ?? '',
+                            required: true
+                        },
+                        {
+                            prop: 'layout',
+                            type: 'input',
+                            title: '房型',
+                            content: row?.layout ?? '',
+                            required: true
+                        },
+                        {
+                            prop: 'price',
+                            type: 'input',
+                            title: '总售价',
+                            content: row?.price ?? '',
+                            required: true
+                        },
+                        {
+                            prop: 'area',
+                            type: 'input',
+                            title: '建筑面积',
+                            content: row?.area ?? '',
+                            required: true
+                        },
+                        {
+                            prop: 'unit_price',
+                            type: 'input',
+                            title: '每平米单价',
+                            content: row?.unit_price ?? '',
+                            required: true
+                        },
+                        {
+                            prop: 'floor',
+                            type: 'input',
+                            title: '楼层',
+                            content: row?.floor ?? '',
+                        },
+                        {
+                            prop: 'orientation',
+                            type: 'input',
+                            title: '朝向',
+                            content: row?.orientation ?? '',
+                        },
+                        {
+                            prop: 'elevator',
+                            type: 'select',
+                            title: '是否有电梯',
+                            content: row?.elevator ?? 1,
+                            selectOptions: [
+                                { label: '是', value: 1 },
+                                { label: '否', value: 0 },
+                            ],
+                        },
+                        {
+                            prop: 'ownership',
+                            type: 'input',
+                            title: '权属',
+                            content: row?.ownership ?? '',
+                        },
+                        {
+                            prop: 'building_type',
+                            type: 'input',
+                            title: '楼型',
+                            content: row?.building_type ?? '',
+                        },
+                        {
+                            prop: 'property_type',
+                            type: 'input',
+                            title: '房源类型',
+                            content: row?.property_type ?? '',
+                        },
+                        {
+                            prop: 'decoration',
+                            type: 'input',
+                            title: '装修情况',
+                            content: row?.decoration ?? '',
+                        },
+                        {
+                            prop: 'listing_date',
+                            type: 'date',
+                            title: '挂牌日期',
+                            content: row?.listing_date ?? '',
+                        },
+                        {
+                            prop: 'community',
+                            type: 'input',
+                            title: '小区名称',
+                            content: row?.community ?? '',
+                        },
+                        {
+                            prop: 'contact_person',
+                            type: 'input',
+                            title: '联系人姓名',
+                            content: row?.contact_person ?? '',
+                        },
+                        {
+                            prop: 'contact_info',
+                            type: 'input',
+                            title: '联系方式',
+                            content: row?.contact_info ?? '',
+                        },
+                        {
+                            prop: 'remarks',
+                            type: 'input',
+                            title: '备注信息',
+                            content: row?.remarks ?? '',
+                        },
+                        {
+                            prop: 'state',
+                            type: 'radio',
+                            title: '状态',
+                            content: row?.state ?? 1,
+                            selectOptions: [
+                                {
+                                    label: '上架',
+                                    value: 1,
+                                },
+                                {
+                                    label: '下架',
+                                    value: 0,
+                                },
+                            ]
+                        },
+                        {
+                            prop: 'pic',
+                            type: 'upload',
+                            title: '图片',
+                            content: row?.pic ?? [],
+                            style: 'flex:1;',
+                            upload: {
+                                file_list: row?.pic ? row.pic.map(item => {
+                                    return {
+                                        url: item,
+                                        uid: Math.random(),
+                                    }
+                                }) : [],
+                                url: rootUrl + 'upload/uploadFile',
+                                response(e: any) {
+                                    return e.data
+                                },
+                                limit: 9
+                            }
+                        },
+                    ] as dkFormOptions
+                },
+                async confirm(e) {
+                    const params = await e.getFormParams()
+                    if (params) {
+                        if (row?.id) params.id = row.id
+                        const res = type == 'add' ? await property.createProperty(params) : await property.updateProperty(params)
+                        showTip(res.msg, res.code == 1 ? 'success' : 'error',)
+                        if (res.code == 1) {
+                            e.close()
+                            init()
                         }
-                    },
-                ] as dkFormOptions
-            },
-            async confirm(e) {
-                const params = await e.getFormParams()
-                if (params) {
-                    if (row?.id) params.id = row.id
-                    const res = type == 'add' ? await property.createProperty(params) : await property.updateProperty(params)
-                    showTip(res.msg, res.code == 1 ? 'success' : 'error',)
-                    if (res.code == 1) {
-                        e.close()
-                        init()
                     }
-                }
-            },
-        })
+                },
+            })
+        } catch (error) {
+            console.log("🚀 -- 》》 ~ error:", error)
+        }
 
     }
     return {

@@ -5,13 +5,16 @@ import { UserStore } from "@/store/user";
 import gsap from "gsap";
 onMounted(() => {
 	const tl = gsap.timeline();
-    tl.from('.logo',{y:50,direction:800})
-    tl.from('.app_name',{y:50,direction:1000,delay:.1},'<')
+	tl.from(".logo", { y: 50, direction: 800 });
+	tl.from(".app_name", { y: 50, direction: 1000, delay: 0.1 }, "<");
 });
 </script>
 <template>
 	<div class="InfoBox fx_y">
-		<el-image class="logo" :src="UserStore().userInfo?.app?.logo" />
+		<el-image
+			class="logo"
+			:src="UserStore().userInfo?.head_url ?? UserStore().userInfo?.app?.logo"
+		/>
 		<h2 class="app_name">{{ UserStore().userInfo?.u_name }}</h2>
 	</div>
 </template>
@@ -21,7 +24,7 @@ onMounted(() => {
 	width: v-bind(public_weight) !important;
 	height: v-bind(public_height);
 	padding: 0 10px;
-    box-sizing:border-box;
+	box-sizing: border-box;
 	.logo {
 		width: 50px;
 		height: 50px;
