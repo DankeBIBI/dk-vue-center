@@ -11,9 +11,9 @@ export type responseData = {
     data: any;
 }
 export const rootUrl = import.meta.env.DEV
-    // ? "http://127.0.0.1:8202/"
-    ? "http://139.9.180.250:8202/"
-    : "https://api.dankebibi.cc/";
+    // ? ""
+    ? "http://127.0.0.1:8202/"
+    : "http://139.9.180.250:8202/";
 // export const rootUrl = 'https://api.dankebibi.cc/'
 export const config = {
     rootUrl,
