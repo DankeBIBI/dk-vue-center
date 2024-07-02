@@ -4,7 +4,7 @@ import TopBarVue from "../TopBar/index.vue";
 import MenuVue from "../Menu/index.vue";
 // import MenuVue from "@/components/dk-components/dk-menu/index.vue";
 import MainVue from "../Main/index.vue";
-import dkDialogVue from "@/components/dk-components/dk-dialog/index.vue";
+// import dkDialogVue from "@/components/dk-components/dk-dialog/index.vue";
 onMounted(() => {});
 </script>
 <template>
